@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(112, 112, 112);
+}
+
+.movie-swiper .swiper-pagination {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  bottom: 0 !important;
+  width: 100%;
+  background-color: #161616;
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.25);
+}
+
+.movie-swiper .swiper-pagination-bullet {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid #2b2a2d;
+  margin: 0 5px;
+  color: #2b2a2d;
+  opacity: 1;
+  flex-shrink: 0;
+  font-weight: 100;
+}
+
+.movie-swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #febe08;
+  border: 1px solid #febe08;
+  color: #000;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Stolzl";
+    src: url("./assets/fonts/stolzl/Stolzl-Bold.woff2") format("woff2"),
+      url("./assets/fonts/stolzl/Stolzl-Bold.woff") format("woff");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "Stolzl";
+    src: url("./assets/fonts/stolzl/Stolzl-Medium.woff2") format("woff2"),
+      url("./assets/fonts/stolzl/Stolzl-Medium.woff") format("woff");
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "Stolzl";
+    src: url("./assets/fonts/stolzl/Stolzl-Regular.woff2") format("woff2"),
+      url("./assets/fonts/stolzl/Stolzl-Regular.woff") format("woff");
+    font-weight: 300;
+  }
+
+  body {
+    font-family: "Stolzl", sans-serif;
+  }
+}
+
+@layer components {
+  .activeBtn::after,
+  .activeBtn::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .activeBtn::after {
+    bottom: 100%;
+    box-shadow: 35px 35px 0 10px #febe08;
+  }
+
+  .activeBtn::before {
+    top: 100%;
+    box-shadow: 35px -35px 0 10px #febe08;
+  }
+
+  .primary-filter {
+    filter: invert(59%) sepia(96%) saturate(408%) hue-rotate(3deg)
+      brightness(105%) contrast(106%);
+  }
+
+  .gray-filter {
+    filter: invert(50%) sepia(21%) saturate(0%) hue-rotate(209deg)
+      brightness(83%) contrast(87%);
+  }
+
+  .lightGray-filter {
+    filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(329deg)
+      brightness(92%) contrast(83%);
+  }
+
+  .empty-chair,
+  .selected-chair {
+    position: relative;
+  }
+
+  .selected-chair::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    background: #50c878 url("./assets/icons/cheked.svg") no-repeat center center;
+    opacity: 0.8;
+  }
+
+  .empty-chair::after,
+  .empty-chair::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: calc(100% - 2px);
+    z-index: 1;
+  }
+
+  .empty-chair::after {
+    height: 2px;
+    background-color: #f05252;
+  }
+
+  .empty-chair::before {
+    height: calc(100% - 2px);
+    border-radius: 50%;
+    border: 2px solid #f05252;
+  }
+}
+   
+@layer utilities {
+  .input-style {
+    @apply w-full outline-none rounded-xl transition-colors duration-500 custom-box focus:border-primary ;
+  }
+  .custom-box{
+    @apply bg-white shadow-md border text-dark font-light border-gray-300 dark:bg-dark dark:text-light dark:shadow-darkShadow dark:border-opacity-0 
+  }
+}
